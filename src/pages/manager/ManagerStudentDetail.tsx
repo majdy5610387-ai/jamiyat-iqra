@@ -51,7 +51,7 @@ export default function ManagerStudentDetail() {
 
   return (
     <div className="dashboard-page">
-      <Link className="back-link-button" to="/manager">
+      <Link className="back-link-button" to="/manager/centers">
         ← الرجوع للمراكز
       </Link>
 

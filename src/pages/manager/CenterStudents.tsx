@@ -95,7 +95,7 @@ export default function CenterStudents() {
 
   return (
     <div className="dashboard-page">
-      <Link className="back-link-button" to="/manager">
+      <Link className="back-link-button" to="/manager/centers">
         ← الرجوع للمراكز
       </Link>
 
