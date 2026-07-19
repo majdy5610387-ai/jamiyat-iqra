@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "org.jamiyatiqra.hifz",
+      "sha256_cert_fingerprints": [
+        "92:18:DF:19:5C:67:69:A4:1D:91:56:E7:B9:C5:D5:E6:10:66:3B:9B:B8:6D:4E:F1:7F:BF:BD:FE:7E:61:5A:49"
+      ]
+    }
+  }
+]
