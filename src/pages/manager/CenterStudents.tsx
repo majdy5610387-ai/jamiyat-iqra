@@ -129,14 +129,14 @@ export default function CenterStudents() {
                     const latest = latestByStudent.get(student.id)
                     return (
                       <tr key={student.id}>
-                        <td>
+                        <td data-label="الاسم الرباعي">
                           {getStudentFullName(student)}
                           {student.deletion_requested_at && (
                             <span title="بانتظار موافقة السوبر أدمن على الحذف"> ⏳</span>
                           )}
                         </td>
-                        <td>{student.national_id}</td>
-                        <td>
+                        <td data-label="رقم الهوية">{student.national_id}</td>
+                        <td data-label="آخر سجل حفظ">
                           {latest ? (
                             <>
                               {latest.date} — {latest.surah} ({latest.from_ayah}-{latest.to_ayah})
@@ -151,7 +151,7 @@ export default function CenterStudents() {
                             'لا يوجد سجل بعد'
                           )}
                         </td>
-                        <td>
+                        <td className="data-table-actions">
                           <Link className="detail-link" to={`/manager/students/${student.id}`}>
                             عرض التفاصيل
                           </Link>

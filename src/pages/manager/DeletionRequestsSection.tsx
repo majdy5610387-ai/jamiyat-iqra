@@ -116,15 +116,15 @@ export default function DeletionRequestsSection() {
         <tbody>
           {requests.map((student) => (
             <tr key={student.id}>
-              <td>{getStudentFullName(student)}</td>
-              <td>{student.national_id}</td>
-              <td>{student.teacher?.full_name || '—'}</td>
-              <td>
+              <td data-label="الطالب">{getStudentFullName(student)}</td>
+              <td data-label="رقم الهوية">{student.national_id}</td>
+              <td data-label="المحفظ الطالب للطلب">{student.teacher?.full_name || '—'}</td>
+              <td data-label="تاريخ الطلب">
                 {student.deletion_requested_at
                   ? new Date(student.deletion_requested_at).toLocaleString('ar')
                   : '—'}
               </td>
-              <td>
+              <td className="data-table-actions">
                 <button
                   type="button"
                   className="detail-link"

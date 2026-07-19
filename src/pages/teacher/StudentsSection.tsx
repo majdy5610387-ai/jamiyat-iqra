@@ -209,7 +209,7 @@ export default function StudentsSection() {
             {students!.map((student) =>
               editingId === student.id ? (
                 <tr key={student.id}>
-                  <td>
+                  <td data-label="الاسم الرباعي">
                     <div className="form-field">
                       <input
                         type="text"
@@ -237,23 +237,23 @@ export default function StudentsSection() {
                       />
                     </div>
                   </td>
-                  <td>{student.national_id}</td>
-                  <td>
+                  <td data-label="رقم الهوية">{student.national_id}</td>
+                  <td data-label="تاريخ الميلاد">
                     <input
                       type="date"
                       value={editBirthDate}
                       onChange={(event) => setEditBirthDate(event.target.value)}
                     />
                   </td>
-                  <td>
+                  <td data-label="رقم التواصل">
                     <input
                       type="text"
                       value={editPhone}
                       onChange={(event) => setEditPhone(event.target.value)}
                     />
                   </td>
-                  <td>—</td>
-                  <td>
+                  <td data-label="الحالة">—</td>
+                  <td className="data-table-actions">
                     <button
                       type="button"
                       className="detail-link"
@@ -270,11 +270,11 @@ export default function StudentsSection() {
                 </tr>
               ) : (
                 <tr key={student.id}>
-                  <td>{getLocalStudentFullName(student)}</td>
-                  <td>{student.national_id}</td>
-                  <td>{student.birth_date}</td>
-                  <td>{student.phone}</td>
-                  <td>
+                  <td data-label="الاسم الرباعي">{getLocalStudentFullName(student)}</td>
+                  <td data-label="رقم الهوية">{student.national_id}</td>
+                  <td data-label="تاريخ الميلاد">{student.birth_date}</td>
+                  <td data-label="رقم التواصل">{student.phone}</td>
+                  <td data-label="الحالة">
                     {student.deletion_requested_at && (
                       <span title="بانتظار موافقة السوبر أدمن على الحذف">⏳ بانتظار الحذف</span>
                     )}
@@ -285,7 +285,7 @@ export default function StudentsSection() {
                       <span title={student.syncError || 'تعذّرت المزامنة'}>⚠️ تعارض</span>
                     )}
                   </td>
-                  <td>
+                  <td className="data-table-actions">
                     <Link className="detail-link" to={`/teacher/students/${student.id}`}>
                       عرض التفاصيل
                     </Link>

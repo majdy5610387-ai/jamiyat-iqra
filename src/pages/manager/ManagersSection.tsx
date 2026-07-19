@@ -278,15 +278,15 @@ export default function ManagersSection() {
               if (editingId === manager.id) {
                 return (
                   <tr key={manager.id}>
-                    <td>
+                    <td data-label="الاسم">
                       <input
                         type="text"
                         value={editFullName}
                         onChange={(event) => setEditFullName(event.target.value)}
                       />
                     </td>
-                    <td>{manager.email}</td>
-                    <td>
+                    <td data-label="البريد الإلكتروني">{manager.email}</td>
+                    <td data-label="الصلاحية">
                       <label>
                         <input
                           type="checkbox"
@@ -300,7 +300,7 @@ export default function ManagersSection() {
                         <p className="loading-text">لا يمكنك تغيير صلاحيتك الخاصة</p>
                       )}
                     </td>
-                    <td>
+                    <td className="data-table-actions">
                       <button
                         type="button"
                         className="detail-link"
@@ -321,10 +321,10 @@ export default function ManagersSection() {
               return (
                 <Fragment key={manager.id}>
                   <tr key={manager.id}>
-                    <td>{manager.full_name}</td>
-                    <td>{manager.email}</td>
-                    <td>{manager.is_super_admin ? 'مدير عام' : 'مدير عادي'}</td>
-                    <td>
+                    <td data-label="الاسم">{manager.full_name}</td>
+                    <td data-label="البريد الإلكتروني">{manager.email}</td>
+                    <td data-label="الصلاحية">{manager.is_super_admin ? 'مدير عام' : 'مدير عادي'}</td>
+                    <td className="data-table-actions">
                       <button type="button" className="detail-link" onClick={() => startEdit(manager)}>
                         تعديل
                       </button>

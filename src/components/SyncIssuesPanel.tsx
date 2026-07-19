@@ -59,9 +59,9 @@ export default function SyncIssuesPanel() {
         <tbody>
           {failedItems.map((item) => (
             <tr key={item.localId}>
-              <td>{labelFor(item)}</td>
-              <td>{item.lastError || '—'}</td>
-              <td>
+              <td data-label="العنصر">{labelFor(item)}</td>
+              <td data-label="سبب الفشل">{item.lastError || '—'}</td>
+              <td className="data-table-actions">
                 <button
                   type="button"
                   className="detail-link"

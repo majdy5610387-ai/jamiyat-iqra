@@ -293,14 +293,14 @@ export default function ProgressAndEvaluationsPanel({
             {records.map((record) =>
               !readOnly && editingId === record.id ? (
                 <tr key={record.id}>
-                  <td>
+                  <td data-label="التاريخ">
                     <input
                       type="date"
                       value={editDate}
                       onChange={(event) => setEditDate(event.target.value)}
                     />
                   </td>
-                  <td>
+                  <td data-label="السورة">
                     <select
                       value={editSurah}
                       onChange={(event) => handleEditSurahChange(event.target.value)}
@@ -312,7 +312,7 @@ export default function ProgressAndEvaluationsPanel({
                       ))}
                     </select>
                   </td>
-                  <td>
+                  <td data-label="من - إلى آية">
                     <select
                       value={editFromAyah}
                       onChange={(event) => handleEditFromAyahChange(event.target.value)}
@@ -339,7 +339,7 @@ export default function ProgressAndEvaluationsPanel({
                       ))}
                     </select>
                   </td>
-                  <td>
+                  <td data-label="حالة الحفظ">
                     <select
                       value={editRecordType}
                       onChange={(event) => setEditRecordType(event.target.value)}
@@ -351,7 +351,7 @@ export default function ProgressAndEvaluationsPanel({
                       ))}
                     </select>
                   </td>
-                  <td>
+                  <td data-label="التقييم">
                     <div className="star-rating">
                       {[1, 2, 3, 4, 5].map((value) => (
                         <button
@@ -365,14 +365,14 @@ export default function ProgressAndEvaluationsPanel({
                       ))}
                     </div>
                   </td>
-                  <td>
+                  <td data-label="ملاحظات">
                     <input
                       type="text"
                       value={editNotes}
                       onChange={(event) => setEditNotes(event.target.value)}
                     />
                   </td>
-                  <td>
+                  <td className="data-table-actions">
                     <button
                       type="button"
                       className="detail-link"
@@ -389,18 +389,18 @@ export default function ProgressAndEvaluationsPanel({
                 </tr>
               ) : (
                 <tr key={record.id}>
-                  <td>{record.date}</td>
-                  <td>{record.surah}</td>
-                  <td>
+                  <td data-label="التاريخ">{record.date}</td>
+                  <td data-label="السورة">{record.surah}</td>
+                  <td data-label="من - إلى آية">
                     {record.from_ayah} - {record.to_ayah}
                   </td>
-                  <td>{getRecordTypeLabel(record.record_type)}</td>
-                  <td className="star-display">
+                  <td data-label="حالة الحفظ">{getRecordTypeLabel(record.record_type)}</td>
+                  <td data-label="التقييم" className="star-display">
                     {record.evaluation ? renderStars(record.evaluation.rating) : '—'}
                   </td>
-                  <td>{record.notes || '—'}</td>
+                  <td data-label="ملاحظات">{record.notes || '—'}</td>
                   {!readOnly && (
-                    <td>
+                    <td className="data-table-actions">
                       <button
                         type="button"
                         className="detail-link"

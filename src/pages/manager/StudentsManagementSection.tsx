@@ -199,7 +199,7 @@ export default function StudentsManagementSection() {
             {students.map((student) =>
               editingId === student.id ? (
                 <tr key={student.id}>
-                  <td>
+                  <td data-label="الاسم الرباعي">
                     <div className="form-field">
                       <input
                         type="text"
@@ -227,9 +227,9 @@ export default function StudentsManagementSection() {
                       />
                     </div>
                   </td>
-                  <td>{student.national_id}</td>
-                  <td>{student.center?.name || '—'}</td>
-                  <td>
+                  <td data-label="رقم الهوية">{student.national_id}</td>
+                  <td data-label="المركز">{student.center?.name || '—'}</td>
+                  <td data-label="الهاتف">
                     <input
                       type="text"
                       placeholder="رقم التواصل"
@@ -237,7 +237,7 @@ export default function StudentsManagementSection() {
                       onChange={(event) => setEditPhone(event.target.value)}
                     />
                   </td>
-                  <td>
+                  <td className="data-table-actions">
                     <button
                       type="button"
                       className="detail-link"
@@ -258,7 +258,7 @@ export default function StudentsManagementSection() {
                     نقل {getStudentFullName(student)} إلى:
                     {transferError && <p className="form-error">{transferError}</p>}
                   </td>
-                  <td>
+                  <td data-label="المركز الجديد">
                     <select
                       value={transferCenterId}
                       onChange={(event) => handleTransferCenterChange(event.target.value)}
@@ -270,7 +270,7 @@ export default function StudentsManagementSection() {
                       ))}
                     </select>
                   </td>
-                  <td>
+                  <td data-label="المحفظ الجديد">
                     <select
                       value={transferTeacherId}
                       onChange={(event) => setTransferTeacherId(event.target.value)}
@@ -285,7 +285,7 @@ export default function StudentsManagementSection() {
                         ))}
                     </select>
                   </td>
-                  <td>
+                  <td className="data-table-actions">
                     <button
                       type="button"
                       className="detail-link"
@@ -302,17 +302,17 @@ export default function StudentsManagementSection() {
                 </tr>
               ) : (
                 <tr key={student.id}>
-                  <td>
+                  <td data-label="الاسم الرباعي">
                     {getStudentFullName(student)}
                     {student.deletion_requested_at && (
                       <span title="بانتظار موافقة السوبر أدمن على الحذف"> ⏳</span>
                     )}
                   </td>
-                  <td>{student.national_id}</td>
-                  <td>{student.center?.name || '—'}</td>
-                  <td>{student.teacher?.full_name || '—'}</td>
+                  <td data-label="رقم الهوية">{student.national_id}</td>
+                  <td data-label="المركز">{student.center?.name || '—'}</td>
+                  <td data-label="المحفظ">{student.teacher?.full_name || '—'}</td>
                   {isSuperAdmin && (
-                    <td>
+                    <td className="data-table-actions">
                       <button
                         type="button"
                         className="detail-link"

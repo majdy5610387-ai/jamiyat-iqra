@@ -164,6 +164,63 @@
   font-weight: 600;
 }
 
+/* على الجوال: كل صف يتحوّل لبطاقة مستقلة بدل عمود جدول يتكسر. كل td يعرض
+   تسميته عبر خاصية data-label (مُضافة بالـJSX، لا تغيير بالمنطق). خلية
+   الأزرار (data-table-actions) تُميَّز صراحة بصنف مخصّص بدل الاعتماد على
+   ترتيبها بالصف — لأن بعض الجداول (مثل السجلات بوضع القراءة فقط لولي الأمر)
+   لا تملك عمود أزرار إطلاقًا، فآخر عمود فيها بيانات فعلية لا إجراءات. */
+@media (max-width: 640px) {
+  .data-table {
+    border-collapse: separate;
+    border-spacing: 0 12px;
+  }
+
+  .data-table thead {
+    display: none;
+  }
+
+  .data-table tr {
+    display: block;
+    background: var(--color-surface);
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+
+  .data-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+  }
+
+  .data-table td > * {
+    min-width: 0;
+  }
+
+  .data-table td:last-child {
+    border-bottom: none;
+  }
+
+  .data-table td[data-label]::before {
+    content: attr(data-label);
+    font-size: 12px;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+  }
+
+  .data-table td.data-table-actions {
+    background: var(--color-bg);
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px 16px;
+    padding: 12px 16px;
+  }
+}
+
 .empty-state {
   color: var(--color-text-muted);
   font-size: 14px;

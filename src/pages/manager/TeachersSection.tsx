@@ -299,8 +299,8 @@ export default function TeachersSection() {
                     </div>
                     {resetError && <p className="form-error">{resetError}</p>}
                   </td>
-                  <td>{teacher.center?.name || '—'}</td>
-                  <td>
+                  <td data-label="المركز">{teacher.center?.name || '—'}</td>
+                  <td className="data-table-actions">
                     <button
                       type="button"
                       className="detail-link"
@@ -317,22 +317,22 @@ export default function TeachersSection() {
                 </tr>
               ) : editingId === teacher.id ? (
                 <tr key={teacher.id}>
-                  <td>
+                  <td data-label="الاسم">
                     <input
                       type="text"
                       value={editFullName}
                       onChange={(event) => setEditFullName(event.target.value)}
                     />
                   </td>
-                  <td>{teacher.national_id}</td>
-                  <td>
+                  <td data-label="رقم الهوية">{teacher.national_id}</td>
+                  <td data-label="الهاتف">
                     <input
                       type="text"
                       value={editPhone}
                       onChange={(event) => setEditPhone(event.target.value)}
                     />
                   </td>
-                  <td>
+                  <td data-label="المركز">
                     <select
                       value={editCenterId}
                       onChange={(event) => setEditCenterId(event.target.value)}
@@ -344,7 +344,7 @@ export default function TeachersSection() {
                       ))}
                     </select>
                   </td>
-                  <td>
+                  <td className="data-table-actions">
                     <button
                       type="button"
                       className="detail-link"
@@ -366,7 +366,7 @@ export default function TeachersSection() {
                     نقل كل طلاب {teacher.full_name} إلى:
                     {transferError && <p className="form-error">{transferError}</p>}
                   </td>
-                  <td>
+                  <td data-label="المركز الجديد">
                     <select
                       value={transferNewCenterId}
                       onChange={(event) => handleTransferCenterChange(event.target.value)}
@@ -378,7 +378,7 @@ export default function TeachersSection() {
                       ))}
                     </select>
                   </td>
-                  <td>
+                  <td data-label="المحفظ الجديد">
                     <select
                       value={transferNewTeacherId}
                       onChange={(event) => setTransferNewTeacherId(event.target.value)}
@@ -393,7 +393,7 @@ export default function TeachersSection() {
                         ))}
                     </select>
                   </td>
-                  <td>
+                  <td className="data-table-actions">
                     <button
                       type="button"
                       className="detail-link"
@@ -410,12 +410,12 @@ export default function TeachersSection() {
                 </tr>
               ) : (
                 <tr key={teacher.id}>
-                  <td>{teacher.full_name}</td>
-                  <td>{teacher.national_id}</td>
-                  <td>{teacher.phone || '—'}</td>
-                  <td>{teacher.center?.name || '—'}</td>
+                  <td data-label="الاسم">{teacher.full_name}</td>
+                  <td data-label="رقم الهوية">{teacher.national_id}</td>
+                  <td data-label="الهاتف">{teacher.phone || '—'}</td>
+                  <td data-label="المركز">{teacher.center?.name || '—'}</td>
                   {isSuperAdmin && (
-                    <td>
+                    <td className="data-table-actions">
                       <button
                         type="button"
                         className="detail-link"

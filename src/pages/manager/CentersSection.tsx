@@ -156,14 +156,14 @@ export default function CentersSection() {
             {centers.map((center) =>
               editingId === center.id ? (
                 <tr key={center.id}>
-                  <td>
+                  <td data-label="الاسم">
                     <input
                       type="text"
                       value={editName}
                       onChange={(event) => setEditName(event.target.value)}
                     />
                   </td>
-                  <td>
+                  <td data-label="العنوان">
                     <input
                       type="text"
                       value={editAddress}
@@ -171,7 +171,7 @@ export default function CentersSection() {
                     />
                   </td>
                   <td></td>
-                  <td>
+                  <td className="data-table-actions">
                     <button
                       type="button"
                       className="detail-link"
@@ -188,9 +188,9 @@ export default function CentersSection() {
                 </tr>
               ) : (
                 <tr key={center.id}>
-                  <td>{center.name}</td>
-                  <td>{center.address || '—'}</td>
-                  <td>
+                  <td data-label="الاسم">{center.name}</td>
+                  <td data-label="العنوان">{center.address || '—'}</td>
+                  <td className="data-table-actions">
                     {canViewCenter(center.id) ? (
                       <Link className="detail-link" to={`/manager/centers/${center.id}`}>
                         عرض الطلاب
@@ -206,7 +206,7 @@ export default function CentersSection() {
                     )}
                   </td>
                   {isSuperAdmin && (
-                    <td>
+                    <td className="data-table-actions">
                       <button
                         type="button"
                         className="detail-link"
